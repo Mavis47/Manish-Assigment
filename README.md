@@ -18,23 +18,6 @@ An Insomnia collection is provided in YAML format.
 3. Select `insomnia-api.yaml`
 4. All API requests will be available for testing
 
----ish@fedora:~/Downloads/Assigment$ git add .
-manish@fedora:~/Downloads/Assigment$ git commit -m "Enhanced section 3 ui"
-[main 5c19efc] Enhanced section 3 ui
- 4 files changed, 246 insertions(+), 134 deletions(-)
-manish@fedora:~/Downloads/Assigment$ git push origin main
-Enumerating objects: 17, done.
-Counting objects: 100% (17/17), done.
-Delta compression using up to 8 threads
-Compressing objects: 100% (9/9), done.
-Writing objects: 100% (9/9), 4.07 KiB | 4.07 MiB/s, done.
-Total 9 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
-remote: Resolving deltas: 100% (5/5), completed with 4 local objects.
-To https://github.com/Mavis47/Manish-Assigment.git
-   c6bf982..5c19efc  main -> main
-manish@fedora:~/Downloads/Assigment$ cd ./Section\ 3\ \(frontend\ System\ Design\ Task\)/
-manish@fedora:~/Downloads/Assigment/Section 3 (frontend System Design Task)$ npm run dev
-
 > section-3--frontend-system-design-task-@0.0.0 dev
 > vite
 
@@ -44,53 +27,6 @@ manish@fedora:~/Downloads/Assigment/Section 3 (frontend System Design Task)$ npm
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
   ➜  press h + enter to show help
-^C
-manish@fedora:~/Downloads/Assigment/Section 3 (frontend System Design Task)$ cd ../
-manish@fedora:~/Downloads/Assigment$ git add .
-manish@fedora:~/Downloads/Assigment$ git commit -m "added missing labels"
-[main 322cd70] added missing labels
- 3 files changed, 243 insertions(+), 32 deletions(-)
- create mode 100644 Section 3 (frontend System Design Task)/readme.md
- delete mode 100644 Section 3 (frontend System Design Task)/src/components/FormListItems.tsx
-manish@fedora:~/Downloads/Assigment$ git push origin main
-To https://github.com/Mavis47/Manish-Assigment.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/Mavis47/Manish-Assigment.git'
-hint: Updates were rejected because the remote contains work that you do not
-hint: have locally. This is usually caused by another repository pushing to
-hint: the same ref. If you want to integrate the remote changes, use
-hint: 'git pull' before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-manish@fedora:~/Downloads/Assigment$ git pull
-remote: Enumerating objects: 4, done.
-remote: Counting objects: 100% (4/4), done.
-remote: Compressing objects: 100% (3/3), done.
-remote: Total 3 (delta 1), reused 1 (delta 0), pack-reused 0 (from 0)
-Unpacking objects: 100% (3/3), 1.37 KiB | 1.37 MiB/s, done.
-From https://github.com/Mavis47/Manish-Assigment
-   5c19efc..a1a9bf5  main       -> origin/main
-hint: You have divergent branches and need to specify how to reconcile them.
-hint: You can do so by running one of the following commands sometime before
-hint: your next pull:
-hint:
-hint:   git config pull.rebase false  # merge
-hint:   git config pull.rebase true   # rebase
-hint:   git config pull.ff only       # fast-forward only
-hint:
-hint: You can replace "git config" with "git config --global" to set a default
-hint: preference for all repositories. You can also pass --rebase, --no-rebase,
-hint: or --ff-only on the command line to override the configured default per
-hint: invocation.
-fatal: Need to specify how to reconcile divergent branches.
-manish@fedora:~/Downloads/Assigment$ git push origin main
-To https://github.com/Mavis47/Manish-Assigment.git
- ! [rejected]        main -> main (non-fast-forward)
-error: failed to push some refs to 'https://github.com/Mavis47/Manish-Assigment.git'
-hint: Updates were rejected because the tip of your current branch is behind
-hint: its remote counterpart. If you want to integrate the remote changes,
-hint: use 'git pull' before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-manish@fedora:~/Downloads/Assigment$ ^C
 
 ### Available APIs
 
