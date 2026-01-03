@@ -3,6 +3,7 @@ import CreateForm from "./pages/CreateForm";
 import PreviewForm from "./pages/PreviewForm.tsx";
 import MyForms from "./pages/MyForms";
 import ResultForm from "./pages/ResultForm.tsx";
+import Home from "./pages/Home.tsx";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           <Route path="/preview/:id" element={<PreviewForm />} />
           <Route path="/myforms" element={<MyForms />} />
           <Route path="/result/:id" element={<ResultForm />} />
-          <Route path="*" element={<p>Welcome to Dynamic form builder click on create form to continue...</p>} />
+          <Route path="*" element={<Home/>} />
         </Routes>
       </div>
     </Router>
