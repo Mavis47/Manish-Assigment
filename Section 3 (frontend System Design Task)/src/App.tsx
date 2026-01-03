@@ -22,7 +22,7 @@ function App() {
           <Route path="/preview/:id" element={<PreviewForm />} />
           <Route path="/myforms" element={<MyForms />} />
           <Route path="/result/:id" element={<ResultForm />} />
-          <Route path="*" element={<p>Page not found</p>} />
+          <Route path="*" element={<p>Welcome to Dynamic form builder click on create form to continue...</p>} />
         </Routes>
       </div>
     </Router>
