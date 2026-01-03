@@ -36,53 +36,75 @@ const PreviewForm: React.FC = () => {
 
   const handleChange = (fieldId: string, value: string) => {
     setValues(prev => ({ ...prev, [fieldId]: value }));
-    setErrors(prev => ({ ...prev, [fieldId]: "" })); 
+    setErrors(prev => ({ ...prev, [fieldId]: "" }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault();
-  if (!form) return;
+    e.preventDefault();
+    if (!form) return;
 
-  const newErrors: FormErrors = {};
-  form.fields.forEach(f => {
-    if (f.required && !values[f.id]?.trim()) {
-      newErrors[f.id] = `${f.label} is required`;
+    const newErrors: FormErrors = {};
+    form.fields.forEach(f => {
+      if (f.required && !values[f.id]?.trim()) {
+        newErrors[f.id] = `${f.label} is required`;
+      }
+    });
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      sessionStorage.setItem(
+        `form_values_${form.id}`,
+        JSON.stringify(values)
+      );
+      navigate(`/result/${form.id}`);
     }
-  });
+  };
 
-  setErrors(newErrors);
-
-  if (Object.keys(newErrors).length === 0) {
-    // Save submitted values temporarily
-    sessionStorage.setItem(`form_values_${form.id}`, JSON.stringify(values));
-    // Navigate to result page
-    navigate(`/result/${form.id}`);
-  }
-};
-  if (!form) return <p className="p-4">Form not found!</p>;
+  if (!form)
+    return (
+      <p className="p-6 text-center text-gray-500">
+        Form not found
+      </p>
+    );
 
   return (
-    <div className="p-4 max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">{form.name}</h1>
+    <div className="min-h-screen bg-gray-100 py-10 px-4">
+      <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-8">
+        
+        {/* Header */}
+        <div className="mb-6">
+          <h1 className="text-3xl font-bold text-gray-800">
+            {form.name}
+          </h1>
+          <p className="text-gray-500 mt-1">
+            Please fill out the form below
+          </p>
+        </div>
 
-      <form onSubmit={handleSubmit}>
-        {form.fields.map(field => (
-          <FieldPreview
-            key={field.id}
-            field={field}
-            value={values[field.id]}
-            onChange={val => handleChange(field.id, val)}
-            error={errors[field.id]}
-          />
-        ))}
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {form.fields.map(field => (
+            <FieldPreview
+              key={field.id}
+              field={field}
+              value={values[field.id]}
+              onChange={val => handleChange(field.id, val)}
+              error={errors[field.id]}
+            />
+          ))}
 
-        <button
-          type="submit"
-          className="mt-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
-        >
-          Submit
-        </button>
-      </form>
+          {/* Submit Section */}
+          <div className="pt-6 border-t flex justify-end">
+            <button
+              type="submit"
+              className="bg-green-600 hover:bg-green-700 text-white font-medium px-6 py-2 rounded-lg transition"
+            >
+              Submit Form
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

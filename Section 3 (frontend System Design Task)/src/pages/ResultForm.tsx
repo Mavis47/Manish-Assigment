@@ -15,37 +15,63 @@ const ResultForm: React.FC = () => {
   useEffect(() => {
     if (!id) return;
 
-    // Load form schema
     const loadedForm = loadFormById(id);
     setForm(loadedForm || null);
 
-    // Load submitted values from sessionStorage
     const savedValues = sessionStorage.getItem(`form_values_${id}`);
     if (savedValues) {
       setValues(JSON.parse(savedValues));
     }
   }, [id]);
 
-  if (!form) return <p className="p-4">Form not found!</p>;
+  if (!form)
+    return (
+      <p className="p-6 text-center text-gray-500">
+        Form not found
+      </p>
+    );
 
   return (
-    <div className="p-4 max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Submitted Values: {form.name}</h1>
-      <div className="space-y-2">
-        {form.fields.map((field) => (
-          <div key={field.id} className="p-2 border rounded">
-            <p className="font-semibold">{field.label}:</p>
-            <p className="text-gray-700">{values[field.id] || "-"}</p>
-          </div>
-        ))}
-      </div>
+    <div className="min-h-screen bg-gray-100 py-10 px-4">
+      <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-8">
+        
+        {/* Header */}
+        <div className="mb-6">
+          <h1 className="text-3xl font-bold text-gray-800">
+            Submitted Values
+          </h1>
+          <p className="text-gray-500 mt-1">
+            {form.name}
+          </p>
+        </div>
 
-      <Link
-        to="/myforms"
-        className="mt-4 inline-block bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
-      >
-        Back to My Forms
-      </Link>
+        {/* Values */}
+        <div className="space-y-4">
+          {form.fields.map((field) => (
+            <div
+              key={field.id}
+              className="border rounded-lg p-4 bg-gray-50"
+            >
+              <p className="text-sm text-gray-500 mb-1">
+                {field.label}
+              </p>
+              <p className="text-gray-800 font-medium">
+                {values[field.id] || "—"}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Actions */}
+        <div className="mt-8 flex justify-end">
+          <Link
+            to="/myforms"
+            className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-lg transition"
+          >
+            Back to My Forms
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
